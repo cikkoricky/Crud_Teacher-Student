@@ -22,9 +22,8 @@ Route::resource('/teachers', 'TeacherController');
 
 Route::resource('/students', 'StudentController');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [TeacherController::class ,'index']);
+
 
 
 

@@ -95,8 +95,10 @@ class TeacherController extends Controller
         ]);
 
        //$teacher->update($request->all());
+       $request->photo->store('Teacher', 'public');
        $teacher = Teacher::find($teacher);
        $teacher->fill($request->all());
+       $teacher->photo=$request->photo->hashName();
        $teacher->save();
 
         return redirect()->route('teachers.index')

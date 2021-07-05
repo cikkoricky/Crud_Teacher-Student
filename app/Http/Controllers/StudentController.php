@@ -82,8 +82,10 @@ class StudentController extends Controller
      */
     public function update(Request $request, $student)
     {
+        $request->photo->store('Student', 'public');
         $student = Student::find($student);
         $student->fill($request->all());
+        $student->photo=$request->photo->hashName();
         $student->save();
 
          return redirect()->route('students.index')
